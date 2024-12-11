@@ -1,10 +1,12 @@
-# Padrao PS WEB
+# Padrao PSWEB
 
-Projeto criado para padronizar minha criação de projeto.
+Projeto para fiz de estudo ultilizando linguagem PHP.
 
 
-
-Funcionalidades:
-
+Estruturas:
  [x] ROTAS
+ [x] MODEL
+ [x] VIEW
  [x] CONTROLLER
+
+

@@ -1,6 +1,7 @@
 <?php
 
 
+
 rota('/', function () {
     view('home');
 });

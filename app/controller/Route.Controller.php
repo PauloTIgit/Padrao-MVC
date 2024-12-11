@@ -4,8 +4,11 @@ function view($view)
 {
     if(file_exists("./view/$view.php")){
         component('header');
+        component('nav');
         include "./view/$view.php";
         component('footer');
+    }else{
+        print_r('pagina nao existe');
     }
     exit();
 }
@@ -21,9 +24,15 @@ function controller($controller)
 
 function rota($rota, $f)
 {
+   $_SESSION['dadosRoute'][] = $rota;
     if( substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/')) == $rota)
     {
         $f();
         exit();
     }
+}
+
+function rouback($rouback)
+{
+    view($rouback);
 }
