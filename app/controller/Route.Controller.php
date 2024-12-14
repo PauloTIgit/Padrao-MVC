@@ -8,7 +8,7 @@ function view($view)
         include "./view/$view.php";
         component('footer');
     }else{
-        print_r('pagina nao existe');
+        header('Location: ./404');
     }
     exit();
 }
