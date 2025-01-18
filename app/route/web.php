@@ -3,7 +3,7 @@
 
 
 rota('/', function () {
-    view('home');
+    view('login');
 });
 
 rota('/about', function (){
@@ -15,11 +15,20 @@ rota('/contact', function (){
 });
 
 rota('/login', function () {
-    view('login');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        controller('Login');
+    }else{
+        view('login');
+    }
 });
 
 rota('/register', function () {
-    view('register');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        return 'sucesso';
+        // controller('login');
+    }else{
+        view('register');
+    }
 });
 
 

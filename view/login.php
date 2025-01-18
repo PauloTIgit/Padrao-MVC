@@ -15,7 +15,7 @@
         <div class="col-12 mx-auto ">       
             <!--Form To sign-in-->
             <div class="main-form-wraper"> 
-            <form class="main-form" id="main-form">
+            <form class="main-form" id="form-login">
                 <div class="row ">
                 <div class="col-12 ">
                     <div class="   input-wraper">
@@ -49,3 +49,36 @@
     </div>
 </section>
 <!-- End  page-footer Section-->
+ 
+<script>
+    $(document).ready( function(){
+
+        $('#form-login').submit(function (event) {
+            event.preventDefault();
+
+            var formData = $(this).serialize();
+            
+            // Enviar via AJAX
+            $.ajax({
+                type: 'POST',
+                url: './login', // URL do endpoint para login
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    
+                    // Exibir notificação de sucesso com Toastr
+                    toastr.success('Login realizado com sucesso!');
+                    // Redirecionar ou realizar outras ações conforme necessário
+                },
+                error: function (error) {
+                    console.log(error);
+
+                    // Exibir notificação de erro com Toastr
+                    toastr.error('Erro ao realizar login. Verifique suas credenciais.');
+                }
+            });
+
+        });
+    });
+</script>

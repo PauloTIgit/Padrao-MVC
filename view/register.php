@@ -15,7 +15,7 @@
         <div class="col-12 mx-auto ">       
             <!--Form To sign-in-->
             <div class="main-form-wraper"> 
-            <form class="main-form" action="#">
+            <form class="main-form" id="form-register">
                 <div class="row ">
                 <div class="col-12 ">
                     <div class="   input-wraper">
@@ -60,9 +60,39 @@
         </div>
         </div>
         <div class="or-sign-up">
-        <p class="sign-up-hint">Já tenho conta?<a class="sign-up-link" href="sign-in.html">faça login aqui. </a></p>
+        <p class="sign-up-hint">Já tenho conta?<a class="sign-up-link" href="./">faça login aqui. </a></p>
         </div>
     </div>
     </div>
 </section>
 <!-- End  page-footer Section-->
+
+<script>
+    $(document).ready( function(){
+
+        $('#form-register').submit(function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            // enviar ajax
+            $.ajax({
+                url: './register',
+                type: 'POST',
+                data:formData,
+                success:function(response){
+                    console.log(response);
+                    
+                    toastr.success('Sucess');
+                },
+                error:function(error){
+                    console.log(error);
+
+                    toastr.error('Erro');
+                }
+
+            });
+
+        });
+    });
+</script>
